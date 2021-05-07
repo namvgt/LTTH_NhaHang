@@ -1,0 +1,86 @@
+﻿.dialog-modal {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    opacity: 0.2;
+}
+
+.dialog {
+    display: none;
+    position: absolute;
+    width: 600px;
+    height: 450px;
+    border: 3px solid #4e73df;
+    background-color: #fff;
+    top: 100px;
+    left: calc(50% - 300px);
+    border-radius: 3px;
+    font-size: 16px;
+    font-family: Roboto, Arial, sans-serif;
+}
+
+    .dialog .dialog-header {
+        display: flex;
+        background-color: #4e73df;
+        color: #fff;
+        height: 25px;
+    }
+
+        .dialog .dialog-header .dialog-cancel {
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+    .dialog .dialog-body {
+        height: 100%;
+        padding: 10px;
+    }
+
+    .dialog .dialog-label {
+        width: 25%;
+    }
+
+    .dialog .dialog-footer {
+        height: 40px;
+        width: 100%;
+        padding-left: 10px;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+input, textarea {
+    width: calc(100%);
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    padding: 5px;
+    color: #666;
+}
+
+    input:focus {
+        border: 1px solid #4e73df;
+        outline: none;
+    }
+
+    input:hover, textarea:hover {
+        box-shadow: 0 0 5px 0 #095484;
+    }
+
+button#btn-save, #btn-cancel {
+    margin-right: 10px
+}
+
+#a-cancel:hover {
+    cursor: pointer;
+}
+
+.required, .required:focus {
+    box-shadow: 0 0 5px 0 #ff0000;
+}

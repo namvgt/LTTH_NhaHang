@@ -57,7 +57,7 @@
         <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="service-item">
-                    <a href="menu.html">
+                    <a href="Home/Menu">
                         <img src="~/Content/img/cook_breakfast.png" alt="Breakfast">
                         <h4>Breakfast</h4>
                     </a>
@@ -65,7 +65,7 @@
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="service-item">
-                    <a href="menu.html">
+                    <a href="Home/Menu">
                         <img src="~/Content/img/cook_lunch.png" alt="Lunch">
                         <h4>Lunch</h4>
                     </a>
@@ -73,7 +73,7 @@
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="service-item">
-                    <a href="menu.html">
+                    <a href="Home/Menu">
                         <img src="~/Content/img/cook_dinner.png" alt="Dinner">
                         <h4>Dinner</h4>
                     </a>
@@ -81,7 +81,7 @@
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="service-item">
-                    <a href="menu.html">
+                    <a href="Home/Menu">
                         <img src="~/Content/img/cook_dessert.png" alt="Desserts">
                         <h4>Desserts</h4>
                     </a>
@@ -248,7 +248,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" id="rowblog">
             <div class="col-md-6">
                 <div class="blog-post">
                     <img src="~/Content/img/blog_post_01.jpg" alt="">
@@ -305,6 +305,20 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+                <div class="blog-post">
+                    <img src="~/Content/img/blog_post_04.jpg" alt="">
+                    <div class="date">03 Oct 2020</div>
+                    <div class="right-content">
+                        <h4>Crucifix Selvage Coat</h4>
+                        <span>Plate / Chef</span>
+                        <p>Skateboard iceland twee tofu shaman crucifix vice before they sold out corn hole occupy drinking vinegar chambra meggings kale chips hexagon...</p>
+                        <div class="text-button">
+                            <a href="#">Continue Reading</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -339,6 +353,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        loadData()
         // navigation click actions
         $('.scroll-link').on('click', function (event) {
             event.preventDefault();
@@ -372,4 +387,32 @@
             log: function () { }
         };
     }
+    function loadData() {
+        $.each(listBlog, function (index, item) {
+            var row = $(`<div class='col-md-6'>
+                <div class='blog-post'>
+                    <img src='`+ item.anhminhhoa + `' alt=''>
+                    <div class='date'>`+ item.ngayblog +`</div>
+                    <div class='right-content'>
+                        <h4>`+ item.tenblog + `</h4>
+                        <span>`+ item.nguoidung + `</span>
+                        <p>`+ item.noidung +`</p>
+                        <div class='text-button'>
+                            <a href='#'>Continue Reading</a>
+                        </div>
+                    </div>
+                </div>
+            </div>`);
+            $("#rowblog").append(row);
+        })
+    }
+    var listBlog = [
+        {
+            tenblog: "Stumptown Tofu Schlitz",
+            ngayblog: "26 Oct 2020",
+            noidung: "Skateboard iceland twee tofu shaman crucifix vice before they sold out corn hole occupy drinking vinegar chambra meggings kale chips hexagon...",
+            anhminhhoa: "Content/img/blog_post_04.jpg",
+            nguoidung: "Branding / Admin"
+        }
+    ]
 </script>

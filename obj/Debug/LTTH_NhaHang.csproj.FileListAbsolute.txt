@@ -166,3 +166,7 @@ C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\obj\Debug\LTTH_NhaHang.csprojAssembly
 C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\obj\Debug\LTTH_NhaHang.csproj.CopyComplete
 C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\obj\Debug\LTTH_NhaHang.dll
 C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\obj\Debug\LTTH_NhaHang.pdb
+C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\bin\EntityFramework.dll
+C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\bin\EntityFramework.SqlServer.dll
+C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\bin\EntityFramework.xml
+C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\bin\EntityFramework.SqlServer.xml
