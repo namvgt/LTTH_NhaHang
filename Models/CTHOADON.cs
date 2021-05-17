@@ -11,13 +11,13 @@ namespace LTTH_NhaHang.Models
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(10)]
-        public string hoadonID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int hoadonID { get; set; }
 
         [Key]
         [Column(Order = 1)]
-        [StringLength(10)]
-        public string monanID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int monanID { get; set; }
 
         public int? soluong { get; set; }
 

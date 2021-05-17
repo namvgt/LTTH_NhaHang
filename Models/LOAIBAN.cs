@@ -15,8 +15,7 @@ namespace LTTH_NhaHang.Models
             BANs = new HashSet<BAN>();
         }
 
-        [StringLength(10)]
-        public string loaibanID { get; set; }
+        public int loaibanID { get; set; }
 
         public int? succhua { get; set; }
 

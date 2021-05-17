@@ -16,7 +16,7 @@ namespace LTTH_NhaHang.Areas.Admin
         {
             context.MapRoute(
                 "Admin_default",
-                "{controller}/{action}/{id}",
+                "Admin/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }

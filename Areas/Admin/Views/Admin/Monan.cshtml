@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Blog";
+    ViewBag.Title = "Monan";
 }
 <link href="~/Areas/Admin/css/button.css" rel="stylesheet" />
 <link href="~/Areas/Admin/css/dialog.css" rel="stylesheet" />
@@ -8,7 +8,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Blogs</h1>
+    <h1 class="h3 mb-2 text-gray-800">Món ăn</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -32,7 +32,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Thông tin blog</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Thông tin món ăn</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -41,13 +41,22 @@
                 <div class="dialog-body">
                     <input type="hidden" id="monanID" />
                     <div class="">
-                        <label class="dialog-label">Tên blog</label>
-                        <input type="text" id="txtTenblog" />
+                        <label class="dialog-label">Tên món</label>
+                        <input type="text" id="txtTenmonan" />
                     </div>
                     <div class="item">
-                        <label class="dialog-label">Nội dung</label>
-                        <textarea rows="5" id="txtNoidung"></textarea>
+                        <label class="dialog-label">Mô tả</label>
+                        <textarea rows="5" id="txtMota"></textarea>
                     </div>
+                    <div class="item">
+                        <div class="city-item">
+                            <input type="text" id="txtDongia" placeholder="Đơn giá" />
+                            <select id="loaimonan">
+                                <option value="">Loại món ăn</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="item">
                         <label class="dialog-label">Ảnh minh họa</label>
                         <div class="file-upload">
@@ -68,35 +77,48 @@
     </div>
 </div>
 <!-- /.container-fluid -->
-<!-- Page level plugins -->
-@*<script src="~/Areas/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/Areas/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>*@
-
 <!-- Page level custom scripts -->
-<script src="~/Areas/Admin/js/demo/datatables-demo.js"></script>
+<script src="~/Scripts/inputFilter.js"></script>
 <script>
     var formmode = null;
     loadData()
     $(document).ready(function () {
+        $.ajax({
+            url: "https://localhost:44315/api/loaimonan",
+            method: "GET",
+            data: "",
+            contentType: "application/json",
+            dataType: "",
+        }).done(function (res) {
+            $.each(res, function (index, item) {
+                var option = $(`<option value="` + item.loaimonanID + `">` + item.tenloaimon + `</option>`);
+                $("#loaimonan").append(option);
+            })
+        });
+        setInputFilter(document.getElementById("txtDongia"), function (value) {
+            return /^-?\d*[.]?\d*$/.test(value);
+        });
         $("#btnAdd").on('click', function (event) {
             event.preventDefault();
             $("#dialog").modal();
-            $("#txtTenblog").val("");
-            $("#txtNoidung").val("");
+            $("#txtTenmonan").val("");
+            $("#txtMota").val("");
+            $("#txtDongia").val("");
+            $("#loaimonan").val("");
             $(".file-upload").removeClass('active');
             $("#noFile").text("Chưa có file nào được chọn...");
             formmode = "add"
         });
         $("#btn-save").on('click', function (event) {
             event.preventDefault();
-            if (!$("#txtTenblog").val()) {
-                $("#txtTenblog").addClass('required');
-                $("#txtTenblog").focus();
+            if (!$("#txtTenmonan").val()) {
+                $("#txtTenmonan").addClass('required');
+                $("#txtTenmonan").focus();
                 return;
             }
-            if (!$("#txtNoidung").val()) {
-                $("#txtNoidung").addClass('required');
-                $("#txtNoidung").focus();
+            if (!$("#txtMota").val()) {
+                $("#txtMota").addClass('required');
+                $("#txtMota").focus();
                 return;
             }
             if ($("#noFile").text()=="Chưa có file nào được chọn...") {
@@ -104,17 +126,17 @@
                 return;
             }
             var obj = {};
-            var today = new Date();
-            var ngayblog = today.getFullYear() + '-' + String(today.getMonth() + 1) + '-' + today.getDate();
-            obj.tenblog = $("#txtTenblog").val();
-            obj.ngayblog = ngayblog;
-            obj.noidung = $("#txtNoidung").val();
-            obj.nguoidungID = 1;
+            //var today = new Date();
+            //var ngayMonan = today.getFullYear() + '-' + String(today.getMonth() + 1) + '-' + today.getDate();
+            obj.tenmonan = $("#txtTenmonan").val();
+            obj.mota = $("#txtMota").val();
+            obj.loaimonanID = $("#loaimonan").val();
             obj.anhminhhoa = $("#noFile").text();
+            obj.dongia = $("#txtDongia").val();
             debugger
             if (formmode == "add") {
                 $.ajax({
-                    url: "https://localhost:44315/api/Blog",
+                    url: "https://localhost:44315/api/Monan",
                     method: "POST",
                     data: JSON.stringify(obj),
                     contentType: "application/json",
@@ -128,12 +150,13 @@
             }
             else {
                 $.ajax({
-                    url: "https://localhost:44315/api/Blog/" + $("#maBlog").val(),
+                    url: "https://localhost:44315/api/Monan/" + $("#monanID").val(),
                     method: "PUT",
                     data: JSON.stringify(obj),
                     contentType: "application/json",
                     dataType: "json"
                 }).done(function (response) {
+                    loadData();
                     $("#dialog").modal("hide");
                 }).fail(function (response) {
 
@@ -155,7 +178,7 @@
     function loadData() {
         $("#data-table").empty();
         $.ajax({
-            url: "https://localhost:44315/api/Blog",
+            url: "https://localhost:44315/api/Monan",
             method: "GET",
             data: "",
             contentType: "application/json",
@@ -165,9 +188,10 @@
                     <thead>
                         <tr>
                             <th>Ảnh minh họa</th>
-                            <th>Tên blog</th>
-                            <th>Nội dung</th>
-                            <th>Tác giả</th>
+                            <th>Tên món</th>
+                            <th>Mô tả</th>
+                            <th>Đơn giá</th>
+                            <th>Loại món</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -175,22 +199,24 @@
                     <tfoot>
                         <tr>
                             <th>Ảnh minh họa</th>
-                            <th>Tên blog</th>
-                            <th>Nội dung</th>
-                            <th>Tác giả</th>
+                            <th>Tên món</th>
+                            <th>Mô tả</th>
+                            <th>Đơn giá</th>
+                            <th>Loại món</th>
                             <th></th>
                             <th></th>
                         </tr>
                     </tfoot>
-                    <tbody id="rowblog">`;
+                    <tbody id="rowMonan">`;
             $.each(response, function (index, item) {
                 var row = `<tr>
                             <th><img src="`+ item.anhminhhoa.trim() + `" alt=""></th>
-                            <th>`+ item.tenblog + `</th>
-                            <th>`+ item.noidung + `</th>
-                            <th>`+ item.NGUOIDUNG.quyen + `</th>
-                            <th style="text-align: center"><a onclick="deleteBlog(`+ item.blogID + `)" href="#"><i class="fas fa-trash-alt fa-2x" style="color: #ff0000"></i></a></th>
-                            <th style="text-align: center"><a onclick="editBlog(`+ item.blogID + `)" href="#"><i class="fas fa-edit fa-lg fa-2x"></i></a></th>
+                            <th>`+ item.tenmonan + `</th>
+                            <th>`+ item.mota + `</th>
+                            <th>`+ item.dongia + `</th>
+                            <th>`+ item.LOAIMONAN.tenloaimon + `</th>
+                            <th style="text-align: center"><a onclick="deleteMonan(`+ item.monanID + `)" href="#"><i class="fas fa-trash-alt fa-2x" style="color: #ff0000"></i></a></th>
+                            <th style="text-align: center"><a onclick="editMonan(`+ item.monanID + `)" href="#"><i class="fas fa-edit fa-lg fa-2x"></i></a></th>
                         </tr>`;
                 table += row;
             })
@@ -202,8 +228,8 @@
 
         })
     }
-    function editBlog(blogID) {
-        var url = "https://localhost:44315/api/Blog/" + blogID;
+    function editMonan(monanID) {
+        var url = "https://localhost:44315/api/Monan/" + monanID;
         $.ajax({
             url: url,
             method: "GET",
@@ -212,20 +238,22 @@
             contentType: "application/json"
         }).done(function (response) {
             $("#dialog").modal();
-            $("#maBlog").val(response.blogID);
-            $("#txtTenblog").val(response.tenblog);
-            $("#txtNoidung").val(response.noidung);
+            $("#monanID").val(response.monanID);
+            $("#txtTenmonan").val(response.tenmonan);
+            $("#txtMota").val(response.mota);
+            $("#txtDongia").val(response.dongia);
+            $("#loaimonan").val(response.loaimonanID);
             $("#noFile").text(response.anhminhhoa.split("/")[3]);
             $(".file-upload").addClass('active');
         }).fail(function (response) {
 
         })
     }
-    function deleteBlog(blogID) {
-        if (confirm("Bạn có chắc muốn xóa blog này?")) {
+    function deleteMonan(monanID) {
+        if (confirm("Bạn có chắc muốn xóa món ăn này?")) {
             debugger
             $.ajax({
-                url: "https://localhost:44315/api/Blog/" + blogID,
+                url: "https://localhost:44315/api/Monan/" + monanID,
                 method: "delete",
                 data: "",
                 dataType: "",

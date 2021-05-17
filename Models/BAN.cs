@@ -9,14 +9,11 @@ namespace LTTH_NhaHang.Models
     [Table("BAN")]
     public partial class BAN
     {
-        [StringLength(10)]
-        public string banID { get; set; }
+        public int banID { get; set; }
 
-        [StringLength(10)]
-        public string loaibanID { get; set; }
+        public int? loaibanID { get; set; }
 
-        [StringLength(10)]
-        public string datbanID { get; set; }
+        public int? datbanID { get; set; }
 
         public bool? trangthai { get; set; }
 

@@ -17,5 +17,13 @@ namespace LTTH_NhaHang.Areas.Admin.Controllers
         {
             return View();
         }
+        public ActionResult Monan()
+        {
+            return View();
+        }
+        public ActionResult Loaimonan()
+        {
+            return View();
+        }
     }
 }

@@ -15,11 +15,9 @@ namespace LTTH_NhaHang.Models
             CTDATMONs = new HashSet<CTDATMON>();
         }
 
-        [StringLength(10)]
-        public string datmonID { get; set; }
+        public int datmonID { get; set; }
 
-        [StringLength(10)]
-        public string khachhangID { get; set; }
+        public int? khachhangID { get; set; }
 
         [StringLength(10)]
         public string nguoidungID { get; set; }

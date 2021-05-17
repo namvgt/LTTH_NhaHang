@@ -9,8 +9,7 @@ namespace LTTH_NhaHang.Models
     [Table("DAUBEP")]
     public partial class DAUBEP
     {
-        [StringLength(10)]
-        public string daubepID { get; set; }
+        public int daubepID { get; set; }
 
         [StringLength(50)]
         public string hoten { get; set; }
@@ -24,7 +23,7 @@ namespace LTTH_NhaHang.Models
         [Column(TypeName = "text")]
         public string mota { get; set; }
 
-        [StringLength(25)]
+        [StringLength(50)]
         public string anhminhhoa { get; set; }
     }
 }

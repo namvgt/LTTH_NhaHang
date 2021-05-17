@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Blog";
+    ViewBag.Title = "Loaimonan";
 }
 <link href="~/Areas/Admin/css/button.css" rel="stylesheet" />
 <link href="~/Areas/Admin/css/dialog.css" rel="stylesheet" />
@@ -8,7 +8,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Blogs</h1>
+    <h1 class="h3 mb-2 text-gray-800">Loại món ăn</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -32,21 +32,17 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Thông tin blog</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Thông tin loại món ăn</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <form>
                 <div class="dialog-body">
-                    <input type="hidden" id="monanID" />
+                    <input type="hidden" id="loaimonanID" />
                     <div class="">
-                        <label class="dialog-label">Tên blog</label>
-                        <input type="text" id="txtTenblog" />
-                    </div>
-                    <div class="item">
-                        <label class="dialog-label">Nội dung</label>
-                        <textarea rows="5" id="txtNoidung"></textarea>
+                        <label class="dialog-label">Tên loại món</label>
+                        <input type="text" id="txtTenloaimon" />
                     </div>
                     <div class="item">
                         <label class="dialog-label">Ảnh minh họa</label>
@@ -68,12 +64,7 @@
     </div>
 </div>
 <!-- /.container-fluid -->
-<!-- Page level plugins -->
-@*<script src="~/Areas/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/Areas/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>*@
-
 <!-- Page level custom scripts -->
-<script src="~/Areas/Admin/js/demo/datatables-demo.js"></script>
 <script>
     var formmode = null;
     loadData()
@@ -81,22 +72,16 @@
         $("#btnAdd").on('click', function (event) {
             event.preventDefault();
             $("#dialog").modal();
-            $("#txtTenblog").val("");
-            $("#txtNoidung").val("");
+            $("#txtTenloaimon").val("");
             $(".file-upload").removeClass('active');
             $("#noFile").text("Chưa có file nào được chọn...");
             formmode = "add"
         });
         $("#btn-save").on('click', function (event) {
             event.preventDefault();
-            if (!$("#txtTenblog").val()) {
-                $("#txtTenblog").addClass('required');
-                $("#txtTenblog").focus();
-                return;
-            }
-            if (!$("#txtNoidung").val()) {
-                $("#txtNoidung").addClass('required');
-                $("#txtNoidung").focus();
+            if (!$("#txtTenloaimon").val()) {
+                $("#txtTenloaimon").addClass('required');
+                $("#txtTenloaimon").focus();
                 return;
             }
             if ($("#noFile").text()=="Chưa có file nào được chọn...") {
@@ -104,17 +89,12 @@
                 return;
             }
             var obj = {};
-            var today = new Date();
-            var ngayblog = today.getFullYear() + '-' + String(today.getMonth() + 1) + '-' + today.getDate();
-            obj.tenblog = $("#txtTenblog").val();
-            obj.ngayblog = ngayblog;
-            obj.noidung = $("#txtNoidung").val();
-            obj.nguoidungID = 1;
+            obj.tenloaimon = $("#txtTenloaimon").val();
             obj.anhminhhoa = $("#noFile").text();
             debugger
             if (formmode == "add") {
                 $.ajax({
-                    url: "https://localhost:44315/api/Blog",
+                    url: "https://localhost:44315/api/loaimonan",
                     method: "POST",
                     data: JSON.stringify(obj),
                     contentType: "application/json",
@@ -128,7 +108,7 @@
             }
             else {
                 $.ajax({
-                    url: "https://localhost:44315/api/Blog/" + $("#maBlog").val(),
+                    url: "https://localhost:44315/api/loaimonan/" + $("#loaimonanID").val(),
                     method: "PUT",
                     data: JSON.stringify(obj),
                     contentType: "application/json",
@@ -155,7 +135,7 @@
     function loadData() {
         $("#data-table").empty();
         $.ajax({
-            url: "https://localhost:44315/api/Blog",
+            url: "https://localhost:44315/api/loaimonan",
             method: "GET",
             data: "",
             contentType: "application/json",
@@ -164,33 +144,31 @@
             var table = `<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Ảnh minh họa</th>
-                            <th>Tên blog</th>
-                            <th>Nội dung</th>
-                            <th>Tác giả</th>
+                            <th style="width: 160px">Ảnh minh họa</th>
+                            <th>Tên loại món</th>
+                            <th>Số lượng</th>
                             <th></th>
                             <th></th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Ảnh minh họa</th>
-                            <th>Tên blog</th>
-                            <th>Nội dung</th>
-                            <th>Tác giả</th>
+                            <th style="width: 160px">Ảnh minh họa</th>
+                            <th>Tên loại món</th>
+                            <th>Số lượng</th>
                             <th></th>
                             <th></th>
                         </tr>
                     </tfoot>
                     <tbody id="rowblog">`;
             $.each(response, function (index, item) {
+                debugger
                 var row = `<tr>
-                            <th><img src="`+ item.anhminhhoa.trim() + `" alt=""></th>
-                            <th>`+ item.tenblog + `</th>
-                            <th>`+ item.noidung + `</th>
-                            <th>`+ item.NGUOIDUNG.quyen + `</th>
-                            <th style="text-align: center"><a onclick="deleteBlog(`+ item.blogID + `)" href="#"><i class="fas fa-trash-alt fa-2x" style="color: #ff0000"></i></a></th>
-                            <th style="text-align: center"><a onclick="editBlog(`+ item.blogID + `)" href="#"><i class="fas fa-edit fa-lg fa-2x"></i></a></th>
+                            <th style="width: 160px"><img src="`+ item.anhminhhoa.trim() + `" alt="" height="200"></th>
+                            <th>`+ item.tenloaimon + `</th>
+                            <th>`+ item.MONANs.length + `</th>
+                            <th style="text-align: center"><a onclick="deleteBlog(`+ item.loaimonanID + `)" href="#"><i class="fas fa-trash-alt fa-2x" style="color: #ff0000"></i></a></th>
+                            <th style="text-align: center"><a onclick="editBlog(`+ item.loaimonanID + `)" href="#"><i class="fas fa-edit fa-lg fa-2x"></i></a></th>
                         </tr>`;
                 table += row;
             })
@@ -202,8 +180,8 @@
 
         })
     }
-    function editBlog(blogID) {
-        var url = "https://localhost:44315/api/Blog/" + blogID;
+    function editBlog(loaimonanID) {
+        var url = "https://localhost:44315/api/loaimonan/" + loaimonanID;
         $.ajax({
             url: url,
             method: "GET",
@@ -212,20 +190,19 @@
             contentType: "application/json"
         }).done(function (response) {
             $("#dialog").modal();
-            $("#maBlog").val(response.blogID);
-            $("#txtTenblog").val(response.tenblog);
-            $("#txtNoidung").val(response.noidung);
+            $("#loaimonanID").val(response.loaimonanID);
+            $("#txtTenloaimon").val(response.tenblog);
             $("#noFile").text(response.anhminhhoa.split("/")[3]);
             $(".file-upload").addClass('active');
         }).fail(function (response) {
 
         })
     }
-    function deleteBlog(blogID) {
-        if (confirm("Bạn có chắc muốn xóa blog này?")) {
+    function deleteBlog(loaimonanID) {
+        if (confirm("Thao tác sẽ xóa toàn bộ món ăn trong loại món này. Bạn có chắc muốn xóa?")) {
             debugger
             $.ajax({
-                url: "https://localhost:44315/api/Blog/" + blogID,
+                url: "https://localhost:44315/api/loaimonan/" + loaimonanID,
                 method: "delete",
                 data: "",
                 dataType: "",
@@ -238,3 +215,4 @@
         }
     }
 </script>
+

@@ -16,12 +16,9 @@ namespace LTTH_NhaHang.Models
             CTHOADONs = new HashSet<CTHOADON>();
         }
 
-        [StringLength(10)]
-        public string monanID { get; set; }
+        public int monanID { get; set; }
 
-        [Required]
-        [StringLength(10)]
-        public string loaimonanID { get; set; }
+        public int loaimonanID { get; set; }
 
         [StringLength(50)]
         public string tenmonan { get; set; }
@@ -31,7 +28,7 @@ namespace LTTH_NhaHang.Models
         [StringLength(50)]
         public string mota { get; set; }
 
-        [StringLength(25)]
+        [StringLength(50)]
         public string anhminhhoa { get; set; }
 
         public bool? trangthai { get; set; }

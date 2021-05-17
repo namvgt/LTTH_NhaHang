@@ -15,11 +15,13 @@ namespace LTTH_NhaHang.Models
             MONANs = new HashSet<MONAN>();
         }
 
-        [StringLength(10)]
-        public string loaimonanID { get; set; }
+        public int loaimonanID { get; set; }
 
         [StringLength(50)]
         public string tenloaimon { get; set; }
+
+        [StringLength(50)]
+        public string anhminhhoa { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MONAN> MONANs { get; set; }

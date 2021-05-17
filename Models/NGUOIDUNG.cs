@@ -9,8 +9,13 @@ namespace LTTH_NhaHang.Models
     [Table("NGUOIDUNG")]
     public partial class NGUOIDUNG
     {
-        [StringLength(10)]
-        public string nguoidungID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public NGUOIDUNG()
+        {
+            BLOGs = new HashSet<BLOG>();
+        }
+
+        public int nguoidungID { get; set; }
 
         [StringLength(50)]
         public string hoten { get; set; }
@@ -30,10 +35,13 @@ namespace LTTH_NhaHang.Models
         [StringLength(15)]
         public string password { get; set; }
 
-        [StringLength(10)]
+        [StringLength(15)]
         public string quyen { get; set; }
 
-        [StringLength(25)]
+        [StringLength(50)]
         public string anhminhhoa { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BLOG> BLOGs { get; set; }
     }
 }

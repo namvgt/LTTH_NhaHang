@@ -28,26 +28,6 @@ namespace LTTH_NhaHang.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<BAN>()
-                .Property(e => e.banID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<BAN>()
-                .Property(e => e.loaibanID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<BAN>()
-                .Property(e => e.datbanID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<BLOG>()
-                .Property(e => e.blogID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<BLOG>()
-                .Property(e => e.nguoidungID)
-                .IsFixedLength();
-
             modelBuilder.Entity<BLOG>()
                 .Property(e => e.noidung)
                 .IsUnicode(false);
@@ -56,42 +36,10 @@ namespace LTTH_NhaHang.Models
                 .Property(e => e.anhminhhoa)
                 .IsFixedLength();
 
-            modelBuilder.Entity<CTDATMON>()
-                .Property(e => e.datmonID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<CTDATMON>()
-                .Property(e => e.monanID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<CTHOADON>()
-                .Property(e => e.hoadonID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<CTHOADON>()
-                .Property(e => e.monanID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<DATBAN>()
-                .Property(e => e.datbanID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<DATBAN>()
-                .Property(e => e.khachhangID)
-                .IsFixedLength();
-
             modelBuilder.Entity<DATBAN>()
                 .Property(e => e.giodat)
                 .IsFixedLength()
                 .IsUnicode(false);
-
-            modelBuilder.Entity<DATMON>()
-                .Property(e => e.datmonID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<DATMON>()
-                .Property(e => e.khachhangID)
-                .IsFixedLength();
 
             modelBuilder.Entity<DATMON>()
                 .Property(e => e.nguoidungID)
@@ -101,10 +49,6 @@ namespace LTTH_NhaHang.Models
                 .HasMany(e => e.CTDATMONs)
                 .WithRequired(e => e.DATMON)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<DAUBEP>()
-                .Property(e => e.daubepID)
-                .IsFixedLength();
 
             modelBuilder.Entity<DAUBEP>()
                 .Property(e => e.sdt)
@@ -119,14 +63,6 @@ namespace LTTH_NhaHang.Models
                 .IsFixedLength();
 
             modelBuilder.Entity<HOADON>()
-                .Property(e => e.hoadonID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<HOADON>()
-                .Property(e => e.khachhangID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<HOADON>()
                 .Property(e => e.nguoidungID)
                 .IsFixedLength();
 
@@ -136,10 +72,6 @@ namespace LTTH_NhaHang.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<KHACHHANG>()
-                .Property(e => e.khachhangID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<KHACHHANG>()
                 .Property(e => e.sdt)
                 .IsFixedLength();
 
@@ -147,26 +79,10 @@ namespace LTTH_NhaHang.Models
                 .Property(e => e.email)
                 .IsFixedLength();
 
-            modelBuilder.Entity<LOAIBAN>()
-                .Property(e => e.loaibanID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<LOAIMONAN>()
-                .Property(e => e.loaimonanID)
-                .IsFixedLength();
-
             modelBuilder.Entity<LOAIMONAN>()
                 .HasMany(e => e.MONANs)
                 .WithRequired(e => e.LOAIMONAN)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<MONAN>()
-                .Property(e => e.monanID)
-                .IsFixedLength();
-
-            modelBuilder.Entity<MONAN>()
-                .Property(e => e.loaimonanID)
-                .IsFixedLength();
 
             modelBuilder.Entity<MONAN>()
                 .Property(e => e.anhminhhoa)
@@ -181,10 +97,6 @@ namespace LTTH_NhaHang.Models
                 .HasMany(e => e.CTHOADONs)
                 .WithRequired(e => e.MONAN)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<NGUOIDUNG>()
-                .Property(e => e.nguoidungID)
-                .IsFixedLength();
 
             modelBuilder.Entity<NGUOIDUNG>()
                 .Property(e => e.sdt)

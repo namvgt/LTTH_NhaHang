@@ -15,11 +15,9 @@ namespace LTTH_NhaHang.Models
             CTHOADONs = new HashSet<CTHOADON>();
         }
 
-        [StringLength(10)]
-        public string hoadonID { get; set; }
+        public int hoadonID { get; set; }
 
-        [StringLength(10)]
-        public string khachhangID { get; set; }
+        public int? khachhangID { get; set; }
 
         [StringLength(10)]
         public string nguoidungID { get; set; }

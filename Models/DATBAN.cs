@@ -15,11 +15,9 @@ namespace LTTH_NhaHang.Models
             BANs = new HashSet<BAN>();
         }
 
-        [StringLength(10)]
-        public string datbanID { get; set; }
+        public int datbanID { get; set; }
 
-        [StringLength(10)]
-        public string khachhangID { get; set; }
+        public int? khachhangID { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime ngaydat { get; set; }

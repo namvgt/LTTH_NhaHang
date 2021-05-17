@@ -9,11 +9,9 @@ namespace LTTH_NhaHang.Models
     [Table("BLOG")]
     public partial class BLOG
     {
-        [StringLength(10)]
-        public string blogID { get; set; }
+        public int blogID { get; set; }
 
-        [StringLength(10)]
-        public string nguoidungID { get; set; }
+        public int? nguoidungID { get; set; }
 
         [StringLength(50)]
         public string tenblog { get; set; }
@@ -24,7 +22,9 @@ namespace LTTH_NhaHang.Models
         [Column(TypeName = "text")]
         public string noidung { get; set; }
 
-        [StringLength(25)]
+        [StringLength(50)]
         public string anhminhhoa { get; set; }
+
+        public virtual NGUOIDUNG NGUOIDUNG { get; set; }
     }
 }

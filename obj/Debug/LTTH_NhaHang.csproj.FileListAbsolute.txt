@@ -162,7 +162,6 @@ C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\bin\System.Net.Http.Formatting.xml
 C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\bin\System.Web.Http.xml
 C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\bin\System.Web.Http.WebHost.xml
 C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\obj\Debug\LTTH_NhaHang.csprojAssemblyReference.cache
 C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\obj\Debug\LTTH_NhaHang.csproj.CopyComplete
 C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\obj\Debug\LTTH_NhaHang.dll
 C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\obj\Debug\LTTH_NhaHang.pdb
@@ -170,3 +169,4 @@ C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\bin\EntityFramework.dll
 C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\bin\EntityFramework.SqlServer.dll
 C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\bin\EntityFramework.xml
 C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\bin\EntityFramework.SqlServer.xml
+C:\Users\ADMIN\Desktop\GitHub\LTTH_NhaHang\obj\Debug\LTTH_NhaHang.csprojAssemblyReference.cache
