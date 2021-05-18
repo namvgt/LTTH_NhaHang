@@ -17,8 +17,7 @@ namespace LTTH_NhaHang.Controllers
         [HttpGet]
         public IEnumerable<BLOG> Get()
         {
-            List<BLOG> listBlog = db.BLOGs.Where(x => x.blogID != 0).ToList();
-            return listBlog;
+            return db.BLOGs.ToList();
         }
 
         // GET: api/Blog/5
@@ -34,6 +33,7 @@ namespace LTTH_NhaHang.Controllers
         [HttpPost]
         public void Post([FromBody]BLOG obj)
         {
+            obj.anhminhhoa = "/Content/img/" + obj.anhminhhoa;
             db.BLOGs.Add(obj);
             db.SaveChanges();
         }

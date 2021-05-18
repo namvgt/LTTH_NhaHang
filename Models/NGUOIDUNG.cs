@@ -23,6 +23,9 @@ namespace LTTH_NhaHang.Models
         [StringLength(10)]
         public string sdt { get; set; }
 
+        [Column(TypeName = "date")]
+        public DateTime? ngaysinh { get; set; }
+
         [StringLength(50)]
         public string diachi { get; set; }
 

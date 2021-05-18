@@ -152,6 +152,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoaiMonAnController.cs" />
     <Compile Include="Controllers\MonAnController.cs" />
+    <Compile Include="Controllers\NguoiDungController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1858,19 +1859,9 @@
     <Content Include="Areas\Admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Areas\Admin\vendor\jquery\jquery.slim.min.js" />
     <Content Include="Areas\Admin\Views\404.html" />
-    <Content Include="Areas\Admin\Views\blank.html" />
-    <Content Include="Areas\Admin\Views\buttons.html" />
-    <Content Include="Areas\Admin\Views\cards.html" />
-    <Content Include="Areas\Admin\Views\charts.html" />
     <Content Include="Areas\Admin\Views\forgot-password.html" />
-    <Content Include="Areas\Admin\Views\index.html" />
     <Content Include="Areas\Admin\Views\login.html" />
     <Content Include="Areas\Admin\Views\register.html" />
-    <Content Include="Areas\Admin\Views\tables.html" />
-    <Content Include="Areas\Admin\Views\utilities-animation.html" />
-    <Content Include="Areas\Admin\Views\utilities-border.html" />
-    <Content Include="Areas\Admin\Views\utilities-color.html" />
-    <Content Include="Areas\Admin\Views\utilities-other.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1885,6 +1876,11 @@
     <Content Include="Content\css\templatemo-style.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\img\avartar1.jpg" />
+    <Content Include="Content\img\avartar2.jpg" />
+    <Content Include="Content\img\avartar3.jpg" />
+    <Content Include="Content\img\avartar4.jpg" />
+    <Content Include="Content\img\avartarDefault.jpg" />
     <Content Include="Content\img\banner-bg.jpg" />
     <Content Include="Content\img\blog_item_01.jpg" />
     <Content Include="Content\img\blog_item_02.jpg" />
@@ -1905,6 +1901,7 @@
     <Content Include="Content\img\cook_dessert.png" />
     <Content Include="Content\img\cook_dinner.png" />
     <Content Include="Content\img\cook_lunch.png" />
+    <Content Include="Content\img\defaultUser.png" />
     <Content Include="Content\img\dinner_item.jpg" />
     <Content Include="Content\img\dinner_menu.jpg" />
     <Content Include="Content\img\heading-bg.jpg" />
@@ -1914,6 +1911,7 @@
     <Content Include="Content\img\next.png" />
     <Content Include="Content\img\prev.png" />
     <Content Include="Content\img\signup-bg.jpg" />
+    <Content Include="Content\img\login.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\flexslider-icon.svg" />
     <Content Include="Global.asax" />
@@ -2112,6 +2110,9 @@
     <Content Include="Areas\Admin\Views\Admin\Blog.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Monan.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Loaimonan.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Nguoidung.cshtml" />
+    <Content Include="Content\css\avatar.less" />
+    <Content Include="Areas\Admin\Views\Admin\Login.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\inputFilter.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
