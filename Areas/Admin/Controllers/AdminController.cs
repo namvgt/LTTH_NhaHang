@@ -27,6 +27,7 @@ namespace LTTH_NhaHang.Areas.Admin.Controllers
         }
         public ActionResult Loaimonan()
         {
+
             return View();
         }
         public ActionResult Nguoidung()
@@ -42,22 +43,24 @@ namespace LTTH_NhaHang.Areas.Admin.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
+            Session.Remove("Nguoidung");
             return View("Login");
-        }
-        [HttpPost]
+        }        
         [AllowAnonymous]
+        [HttpPost]
         public ActionResult Login(string username, string pwd)
         {
-            var user = db.NGUOIDUNGs.Where(x => x.username == username).FirstOrDefault();
+            var user = db.NGUOIDUNGs.Where(x => x.username.Trim() == username).FirstOrDefault();
             if (user == null)
             {
                 return View();
             }
             else
             {
-                if (pwd == user.password)
+                if (pwd == user.password.Trim())
                 {
                     Session["Nguoidung"] = user;
+                    FormsAuthentication.SetAuthCookie(username, false);
                     return View("Monan");
                 }
                 else

@@ -29,5 +29,10 @@ namespace LTTH_NhaHang.Controllers
 
             return View();
         }
+        public ActionResult Notfound()
+        {
+            Response.StatusCode = 404;
+            return View();
+        }
     }
 }

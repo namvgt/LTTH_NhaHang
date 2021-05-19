@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+    <script src="~/Scripts/inputFilter.js"></script>
 
 <section class="banner">
     <div class="container">
@@ -11,14 +11,12 @@
                 <h2>Asian Restaurant</h2>
                 <p>Quisque nec nibh id lacus fringilla eleifend sed sit amet sem. Donec lectus odio, mollis a nisl non, tempor interdum nisl.</p>
                 <div class="primary-button">
-                    <a href="#" class="scroll-link" data-id="book-table">Order Right Now</a>
+                    <a href="#" class="scroll-link" data-id="book-table">Book Table</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-
 
 <section class="cook-delecious">
     <div class="container">
@@ -54,39 +52,7 @@
 
 <section class="services">
     <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="service-item">
-                    <a href="Home/Menu">
-                        <img src="~/Content/img/cook_breakfast.png" alt="Breakfast">
-                        <h4>Breakfast</h4>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="service-item">
-                    <a href="Home/Menu">
-                        <img src="~/Content/img/cook_lunch.png" alt="Lunch">
-                        <h4>Lunch</h4>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="service-item">
-                    <a href="Home/Menu">
-                        <img src="~/Content/img/cook_dinner.png" alt="Dinner">
-                        <h4>Dinner</h4>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-xs-12">
-                <div class="service-item">
-                    <a href="Home/Menu">
-                        <img src="~/Content/img/cook_dessert.png" alt="Desserts">
-                        <h4>Desserts</h4>
-                    </a>
-                </div>
-            </div>
+        <div class="row" id="rowservice">
         </div>
     </div>
 </section>
@@ -109,11 +75,11 @@
             <div class="col-md-4 col-sm-12">
                 <div class="right-info">
                     <h4>Reservation</h4>
-                    <form id="form-submit" action="" method="get">
+                    <form id="form-submit">
                         <div class="row">
                             <div class="col-md-6">
                                 <fieldset>
-                                    <select required name='day' onchange='this.form.()'>
+                                    <select required name='day'>
                                         <option value="">Select day</option>
                                         <option value="Monday">Monday</option>
                                         <option value="Tuesday">Tuesday</option>
@@ -121,13 +87,13 @@
                                         <option value="Thursday">Thursday</option>
                                         <option value="Friday">Friday</option>
                                         <option value="Saturday">Saturday</option>
-                                        <option value="Sunday">Sunday</option>
+                                        <option value="Sunday">Sunday</option>  
                                     </select>
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <fieldset>
-                                    <select required name='hour' onchange='this.form.()'>
+                                    <select required name='hour'>
                                         <option value="">Select hour</option>
                                         <option value="10-00">10:00</option>
                                         <option value="12-00">12:00</option>
@@ -141,17 +107,17 @@
                             </div>
                             <div class="col-md-6">
                                 <fieldset>
-                                    <input name="name" type="name" class="form-control" id="name" placeholder="Full name" required="">
+                                    <input name="name" type="text" class="form-control" id="name" placeholder="Full name" required="">
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <fieldset>
-                                    <input name="phone" type="phone" class="form-control" id="phone" placeholder="Phone number" required="">
+                                    <input name="phone" type="text" class="form-control" id="phone" placeholder="Phone number" required="">
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <fieldset>
-                                    <select required class="person" name='persons' onchange='this.form.()'>
+                                    <select required class="person" name='persons'>
                                         <option value="">How many persons?</option>
                                         <option value="1-Person">1 Person</option>
                                         <option value="2-Persons">2 Persons</option>
@@ -177,7 +143,7 @@
 
 
 
-<section class="get-app">
+@*<section class="get-app">
     <div class="container">
         <div class="row">
             <div class="heading">
@@ -188,7 +154,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>*@
 
 
 
@@ -249,76 +215,6 @@
             </div>
         </div>
         <div class="row" id="rowblog">
-            <div class="col-md-6">
-                <div class="blog-post">
-                    <img src="~/Content/img/blog_post_01.jpg" alt="">
-                    <div class="date">26 Oct 2020</div>
-                    <div class="right-content">
-                        <h4>Stumptown Tofu Schlitz</h4>
-                        <span>Branding / Admin</span>
-                        <p>Skateboard iceland twee tofu shaman crucifix vice before they sold out corn hole occupy drinking vinegar chambra meggings kale chips hexagon...</p>
-                        <div class="text-button">
-                            <a href="#">Continue Reading</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="blog-post">
-                    <img src="~/Content/img/blog_post_02.jpg" alt="">
-                    <div class="date">21 Oct 2020</div>
-                    <div class="right-content">
-                        <h4>Succulents Hashtag Folk</h4>
-                        <span>Branding / Admin</span>
-                        <p>Skateboard iceland twee tofu shaman crucifix vice before they sold out corn hole occupy drinking vinegar chambra meggings kale chips hexagon...</p>
-                        <div class="text-button">
-                            <a href="#">Continue Reading</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="blog-post">
-                    <img src="~/Content/img/blog_post_03.jpg" alt="">
-                    <div class="date">11 Oct 2020</div>
-                    <div class="right-content">
-                        <h4>Knaus Sriracha Pinterest</h4>
-                        <span>Dessert / Chef</span>
-                        <p>Skateboard iceland twee tofu shaman crucifix vice before they sold out corn hole occupy drinking vinegar chambra meggings kale chips hexagon...</p>
-                        <div class="text-button">
-                            <a href="#">Continue Reading</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="blog-post">
-                    <img src="~/Content/img/blog_post_04.jpg" alt="">
-                    <div class="date">03 Oct 2020</div>
-                    <div class="right-content">
-                        <h4>Crucifix Selvage Coat</h4>
-                        <span>Plate / Chef</span>
-                        <p>Skateboard iceland twee tofu shaman crucifix vice before they sold out corn hole occupy drinking vinegar chambra meggings kale chips hexagon...</p>
-                        <div class="text-button">
-                            <a href="#">Continue Reading</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="blog-post">
-                    <img src="~/Content/img/blog_post_04.jpg" alt="">
-                    <div class="date">03 Oct 2020</div>
-                    <div class="right-content">
-                        <h4>Crucifix Selvage Coat</h4>
-                        <span>Plate / Chef</span>
-                        <p>Skateboard iceland twee tofu shaman crucifix vice before they sold out corn hole occupy drinking vinegar chambra meggings kale chips hexagon...</p>
-                        <div class="text-button">
-                            <a href="#">Continue Reading</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
@@ -350,11 +246,10 @@
         </form>
     </div>
 </section>
-
 <script type="text/javascript">
     $(document).ready(function () {
         loadData()
-        // navigation click actions
+        //navigation click actions
         $('.scroll-link').on('click', function (event) {
             event.preventDefault();
             var sectionID = $(this).attr("data-id");
@@ -388,31 +283,49 @@
         };
     }
     function loadData() {
-        $.each(listBlog, function (index, item) {
-            var row = $(`<div class='col-md-6'>
+        $.ajax({
+            url: "https://localhost:44315/api/blog",
+            method: "get",
+            contentType: "application/json",
+        }).done(function (response) {
+            $.each(response, function (index, item) {
+                var row = $(`<div class='col-md-6'>
                 <div class='blog-post'>
                     <img src='`+ item.anhminhhoa + `' alt=''>
-                    <div class='date'>`+ item.ngayblog +`</div>
+                    <div class='date'>`+ item.ngayblog + `</div>
                     <div class='right-content'>
                         <h4>`+ item.tenblog + `</h4>
                         <span>`+ item.nguoidung + `</span>
-                        <p>`+ item.noidung +`</p>
+                        <p>`+ item.noidung + `</p>
                         <div class='text-button'>
                             <a href='#'>Continue Reading</a>
                         </div>
                     </div>
                 </div>
             </div>`);
-            $("#rowblog").append(row);
+                $("#rowblog").append(row);
+            })
+        })
+            $.ajax({
+            url: "https://localhost:44315/api/loaimonan",
+            method: "get",
+            contentType: "application/json",
+        }).done(function (response) {
+            $.each(response, function (index, item) {
+                var row = $(`<div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="service-item">
+                    <a href="Home/Menu">
+                        <img src="`+ item.anhminhhoa + `" alt="` + item.tenloaimon +`">
+                        <h4>`+ item.tenloaimon +`</h4>
+                    </a>
+                </div>
+            </div>`);
+                $("#rowservice").append(row);
+            })
         })
     }
-    var listBlog = [
-        {
-            tenblog: "Stumptown Tofu Schlitz",
-            ngayblog: "26 Oct 2020",
-            noidung: "Skateboard iceland twee tofu shaman crucifix vice before they sold out corn hole occupy drinking vinegar chambra meggings kale chips hexagon...",
-            anhminhhoa: "Content/img/blog_post_04.jpg",
-            nguoidung: "Branding / Admin"
-        }
-    ]
+        setInputFilter(document.getElementById("phone"), function (value) {
+        return /^-?\d*[.]?\d*$/.test(value);
+    });
+
 </script>

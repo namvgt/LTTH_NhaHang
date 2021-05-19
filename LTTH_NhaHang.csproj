@@ -149,6 +149,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\DatbanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoaiMonAnController.cs" />
     <Compile Include="Controllers\MonAnController.cs" />
@@ -1858,10 +1859,6 @@
     <Content Include="Areas\Admin\vendor\jquery\jquery.min.js" />
     <Content Include="Areas\Admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Areas\Admin\vendor\jquery\jquery.slim.min.js" />
-    <Content Include="Areas\Admin\Views\404.html" />
-    <Content Include="Areas\Admin\Views\forgot-password.html" />
-    <Content Include="Areas\Admin\Views\login.html" />
-    <Content Include="Areas\Admin\Views\register.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1901,6 +1898,7 @@
     <Content Include="Content\img\cook_dessert.png" />
     <Content Include="Content\img\cook_dinner.png" />
     <Content Include="Content\img\cook_lunch.png" />
+    <Content Include="Content\img\datmon.jpg" />
     <Content Include="Content\img\defaultUser.png" />
     <Content Include="Content\img\dinner_item.jpg" />
     <Content Include="Content\img\dinner_menu.jpg" />
@@ -2147,6 +2145,7 @@
     <Content Include="Views\Home\Menu.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Blog.cshtml" />
+    <Content Include="Views\Home\Notfound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

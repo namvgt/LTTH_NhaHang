@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="~/Content/css/hero-slider.css">
     <link rel="stylesheet" href="~/Content/css/owl-carousel.css">
     <link rel="stylesheet" href="~/Content/css/templatemo-style.css">
-
+   @* <link href="~/Areas/Admin/css/dialog.css" rel="stylesheet" />*@
     <link href="https://fonts.googleapis.com/css?family=Spectral:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 
@@ -62,7 +62,12 @@
         <!--/.container-->
     </div>
     <!--/.header-->
-
+    <div class="primary-button" style="position: fixed; top: calc(50% - 25px); right: 0; z-index: 1000;">
+        <a href="javascript:void(0)" style="width: 162px" data-id="book-table" id="book">Order Right Now</a>
+    </div>
+    <div class="primary-button" style="position: fixed; top: calc(50% + 25px); right: 0; z-index: 1000;">
+        <a href="javascript:void(0)" style="width: 162px; text-align: center" data-id="book-table" id="order">Book Table</a>
+    </div>
     @RenderBody()
     <footer>
         <div class="container">
@@ -85,6 +90,172 @@
             </div>
         </div>
     </footer>
+    <div class="modal fade" id="datban" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" style="width: 620px" role="document">
+            <div class="modal-content">
+                @*<div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Reservation</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>*@
+                <form>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×&nbsp;</span>
+                    </button>
+                    <div class="dialog-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div style="padding: 50px 0 0 20px">
+                                    <img src="~/Content/img/book_left_image.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="right-info">
+                                    <h4>Reservation</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <select required name='day'>
+                                                    <option value="">Select day</option>
+                                                    <option value="Monday">Monday</option>
+                                                    <option value="Tuesday">Tuesday</option>
+                                                    <option value="Wednesday">Wednesday</option>
+                                                    <option value="Thursday">Thursday</option>
+                                                    <option value="Friday">Friday</option>
+                                                    <option value="Saturday">Saturday</option>
+                                                    <option value="Sunday">Sunday</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <select required name='hour'>
+                                                    <option value="">Select hour</option>
+                                                    <option value="10-00">10:00</option>
+                                                    <option value="12-00">12:00</option>
+                                                    <option value="14-00">14:00</option>
+                                                    <option value="16-00">16:00</option>
+                                                    <option value="18-00">18:00</option>
+                                                    <option value="20-00">20:00</option>
+                                                    <option value="22-00">22:00</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <input name="name" type="text" class="form-control" id="name" placeholder="Full name" required="">
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <input name="phone" type="text" class="form-control" id="phone" placeholder="Phone number" required="">
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <select required class="person" name='persons'>
+                                                    <option value="">How many persons?</option>
+                                                    <option value="1-Person">1 Person</option>
+                                                    <option value="2-Persons">2 Persons</option>
+                                                    <option value="3-Persons">3 Persons</option>
+                                                    <option value="4-Persons">4 Persons</option>
+                                                    <option value="5-Persons">5 Persons</option>
+                                                    <option value="6-Persons">6 Persons</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <button type="submit" id="form-submit" class="btn">Book Table</button>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                @*<div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                        <button class="btn btn-primary" id="btn-save">Lưu</button>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="datmon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" style="width: 900px" role="document">
+            <div class="modal-content">
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×&nbsp;</span>
+                </button>
+                <form>
+
+                    <div class="dialog-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div>
+                                    <img src="~/Content/img/datmon.jpg" style="border-bottom-left-radius: 7px; border-top-left-radius: 7px"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="padding-right: 30px; padding-top: 10px">
+                                <div style="padding-bottom: 20px">
+                                    <fieldset>
+                                        <input name="name" type="text" class="form-control" id="name" placeholder="Họ và tên..." required="">
+                                    </fieldset>
+                                </div>
+                                <div style="padding-bottom: 20px">
+                                    <fieldset>
+                                        <input name="name" type="text" class="form-control" id="name" placeholder="Số điện thoại..." required="">
+                                    </fieldset>
+                                </div>
+                                <div style="padding-bottom: 20px">
+                                    <fieldset>
+                                        <input name="name" type="text" class="form-control" id="name" placeholder="Email..." required="">
+                                    </fieldset>
+                                </div>
+                                <div style="padding-bottom: 20px">
+                                    <fieldset>
+                                        <input name="name" type="text" class="form-control" id="name" placeholder="Địa chỉ..." required="">
+                                    </fieldset>
+                                </div>
+                                @*<div style="padding-bottom: 20px">
+                                    <fieldset>
+                                        <select required class="person" name='persons'>
+                                            <option value="">Chọn món...</option>
+                                            <option value="1-Person">abc</option>
+                                            <option value="2-Persons">abc</option>
+                                            <option value="3-Persons">abc</option>
+                                            <option value="4-Persons">abc</option>
+                                            <option value="5-Persons">abc</option>
+                                            <option value="6-Persons">abc</option>
+                                        </select>
+                                    </fieldset>
+                                </div>*@
+                                <button class="btn btn-primary" type="submit">Đặt món</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                @*<div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+            <button class="btn btn-primary" id="btn-save">Lưu</button>
+        </div>*@
+            </div>
+        </div>
+    </div>
 </body>
 </html>
-
+<script>
+    $("#book").on('click', function (event) {
+        event.preventDefault();
+        $("#datban").modal();
+    });
+    $("#order").on('click', function (event) {
+        event.preventDefault();
+        $("#datmon").modal();
+    });
+</script>
