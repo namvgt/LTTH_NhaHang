@@ -41,7 +41,7 @@ namespace LTTH_NhaHang.Controllers
         // PUT api/<controller>/5
         [Route("{id:int}")]
         [HttpPut]
-        public void Put(int id, [FromBody]NGUOIDUNG value)
+        public void Put(int id, [FromBody ]NGUOIDUNG value)
         {
             var user = db.NGUOIDUNGs.Find(id);
             user.hoten = value.hoten;
