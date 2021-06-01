@@ -63,10 +63,10 @@
     </div>
     <!--/.header-->
     <div class="primary-button" style="position: fixed; top: calc(50% - 25px); right: 0; z-index: 1000;">
-        <a href="javascript:void(0)" style="width: 162px" data-id="book-table" id="book">Order Right Now</a>
+        <a href="javascript:void(0)" style="width: 162px; text-align:center;" data-id="book-table" id="book">Đặt bàn </a>
     </div>
     <div class="primary-button" style="position: fixed; top: calc(50% + 25px); right: 0; z-index: 1000;">
-        <a href="javascript:void(0)" style="width: 162px; text-align: center" data-id="book-table" id="order">Book Table</a>
+        <a href="javascript:void(0)" style="width: 162px; text-align: center" data-id="book-table" id="order">Gọi món ngay</a>
     </div>
     @RenderBody()
     <footer>
@@ -114,64 +114,48 @@
                             <div class="col-md-6">
                                 <div class="right-info">
                                     <h4>Reservation</h4>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <fieldset>
-                                                <select required name='day'>
-                                                    <option value="">Select day</option>
-                                                    <option value="Monday">Monday</option>
-                                                    <option value="Tuesday">Tuesday</option>
-                                                    <option value="Wednesday">Wednesday</option>
-                                                    <option value="Thursday">Thursday</option>
-                                                    <option value="Friday">Friday</option>
-                                                    <option value="Saturday">Saturday</option>
-                                                    <option value="Sunday">Sunday</option>
-                                                </select>
-                                            </fieldset>
+                                    <form id="form-submit" method="post" action="/api/datban/Post">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <fieldset>
+                                                    <input style="margin-top:15px; margin-bottom:15px;" name="ngaydat" type="date" class="form-control" id="name" placeholder="Ngày ăn" required="">
+                                                </fieldset>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <fieldset>
+                                                    <input style="margin-top:15px; margin-bottom:15px;" name="sogio" type="text" class="form-control" id="name" placeholder="Giờ ăn" required="">
+                                                </fieldset>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <fieldset>
+                                                    <input style="margin-top:15px; margin-bottom:15px;" name="hoten" type="text" class="form-control" id="name" placeholder="Họ tên khách hàng" required="">
+                                                </fieldset>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <fieldset>
+                                                    <input style="margin-top:15px; margin-bottom:15px;" name="sdt" type="text" class="form-control" id="phone" placeholder="SĐT" required="">
+                                                </fieldset>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <fieldset>
+                                                    <select required class="person" name='songuoi'>
+                                                        <option value="">Số người ?</option>
+                                                        <option value="1-Person">1</option>
+                                                        <option value="2-Persons">2</option>
+                                                        <option value="3-Persons">3</option>
+                                                        <option value="4-Persons">4</option>
+                                                        <option value="5-Persons">5</option>
+                                                        <option value="6-Persons">6</option>
+                                                    </select>
+                                                </fieldset>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <fieldset>
+                                                    <button type="submit" id="form-submit" class="btn">Book Table</button>
+                                                </fieldset>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <fieldset>
-                                                <select required name='hour'>
-                                                    <option value="">Select hour</option>
-                                                    <option value="10-00">10:00</option>
-                                                    <option value="12-00">12:00</option>
-                                                    <option value="14-00">14:00</option>
-                                                    <option value="16-00">16:00</option>
-                                                    <option value="18-00">18:00</option>
-                                                    <option value="20-00">20:00</option>
-                                                    <option value="22-00">22:00</option>
-                                                </select>
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <fieldset>
-                                                <input name="name" type="text" class="form-control" id="name" placeholder="Full name" required="">
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <fieldset>
-                                                <input name="phone" type="text" class="form-control" id="phone" placeholder="Phone number" required="">
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <fieldset>
-                                                <select required class="person" name='persons'>
-                                                    <option value="">How many persons?</option>
-                                                    <option value="1-Person">1 Person</option>
-                                                    <option value="2-Persons">2 Persons</option>
-                                                    <option value="3-Persons">3 Persons</option>
-                                                    <option value="4-Persons">4 Persons</option>
-                                                    <option value="5-Persons">5 Persons</option>
-                                                    <option value="6-Persons">6 Persons</option>
-                                                </select>
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <fieldset>
-                                                <button type="submit" id="form-submit" class="btn">Book Table</button>
-                                            </fieldset>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

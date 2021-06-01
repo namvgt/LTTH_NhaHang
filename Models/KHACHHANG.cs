@@ -17,7 +17,7 @@ namespace LTTH_NhaHang.Models
             HOADONs = new HashSet<HOADON>();
         }
 
-        public int khachhangID { get; set; }
+        public string khachhangID { get; set; }
 
         [StringLength(50)]
         public string hoten { get; set; }
