@@ -1,15 +1,15 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-    <script src="~/Scripts/inputFilter.js"></script>
+<script src="~/Scripts/inputFilter.js"></script>
 
 <section class="banner">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <h4>Here you can find delecious foods</h4>
+                <h4>Bạn có thể tìm thấy những món ăn tuyệt vời ở đây</h4>
                 <h2>Asian Restaurant</h2>
-                <p>Quisque nec nibh id lacus fringilla eleifend sed sit amet sem. Donec lectus odio, mollis a nisl non, tempor interdum nisl.</p>
+                <p>Những món ăn truyền thống dân tộc trên khắp các quốc gia châu Á với hương vị đậm đà và mới lạ.</p>
                 <div class="primary-button">
                     <a href="#" class="scroll-link" data-id="book-table">Đặt bàn</a>
                 </div>
@@ -30,12 +30,12 @@
                 <div class="cook-content">
                     <h4>We cook delecious</h4>
                     <div class="contact-content">
-                        <span>You can call us on:</span>
+                        <span>Bạn có thể gọi đến số:</span>
                         <h6>+ 1234 567 8910</h6>
                     </div>
                     <span>or</span>
                     <div class="primary-white-button">
-                        <a href="#" class="scroll-link" data-id="book-table">Order Now</a>
+                        <a href="#" class="scroll-link" data-id="book-table">Đặt Bàn Ngay</a>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="heading">
-                    <h2>Book Your Table Now</h2>
+                    <h2>Đặt Bàn Ngay</h2>
                 </div>
             </div>
             <div class="col-md-4 col-md-offset-2 col-sm-12">
@@ -74,37 +74,37 @@
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="right-info">
-                    <h4>Reservation</h4>
-                    <form id="form-submit" method="post" action="/api/datban/Post">
+                    <h4>Thông tin đặt bàn</h4>
+                    <form id="form-submit">
                         <div class="row">
                             <div class="col-md-6">
                                 <fieldset>
-                                    <input style="margin-top:15px; margin-bottom:15px;" name="ngaydat" type="date" class="form-control" id="name" placeholder="Ngày ăn" required="">
+                                    <input style="margin-top:15px; margin-bottom:15px;" name="ngaydat" type="date" class="form-control" id="ngaydat" placeholder="Ngày ăn" required="">
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <fieldset>
-                                    <input style="margin-top:15px; margin-bottom:15px;" name="giodat" type="text" class="form-control" id="name" placeholder="Giờ ăn" required="">
-                                </fieldset>
-                            </div>
-                            <div class="col-md-6" >
-                                <fieldset>
-                                    <input style="margin-top:15px; margin-bottom:15px;" name="hoten" type="text" class="form-control" id="name" placeholder="Họ tên khách hàng" required="">
+                                    <input style="margin-top:15px; margin-bottom:15px;" name="giodat" type="time" class="form-control" id="giodat" placeholder="Thời gian" required="">
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <fieldset>
-                                    <input style="margin-top:15px; margin-bottom:15px;" name="sdt" type="text" class="form-control" id="phone" placeholder="SĐT" required="">
+                                    <input style="margin-top:15px; margin-bottom:15px;" name="hoten" type="text" class="form-control" id="name" placeholder="Họ tên" required="">
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <fieldset>
-                                    <input style="margin-top:15px; margin-bottom:15px;" name="songuoi" type="text" class="form-control" id="songuoi" placeholder="Số người?" required="">
+                                    <input style="margin-top:15px; margin-bottom:15px;" name="sdt" type="text" maxlength="10" class="form-control" id="phone" placeholder="SĐT" required="">
                                 </fieldset>
                             </div>
                             <div class="col-md-6">
                                 <fieldset>
-                                    <button type="submit" id="form-submit" class="btn">Đặt bàn</button>
+                                    <input style="margin-top:15px; margin-bottom:15px;" name="songuoi" type="number" max="20" min="1" class="form-control" id="songuoi" placeholder="Số người" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <button type="submit" id="datban" class="btn">Đặt bàn</button>
                                 </fieldset>
                             </div>
                         </div>
@@ -118,17 +118,17 @@
 
 
 @*<section class="get-app">
-    <div class="container">
-        <div class="row">
-            <div class="heading">
-                <h2>Get application for your phone</h2>
-            </div>
-            <div class="primary-white-button">
-                <a href="#">Download now</a>
+        <div class="container">
+            <div class="row">
+                <div class="heading">
+                    <h2>Get application for your phone</h2>
+                </div>
+                <div class="primary-white-button">
+                    <a href="#">Download now</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>*@
+    </section>*@
 
 
 
@@ -136,43 +136,13 @@
     <div class="container">
         <div class="row">
             <div class="heading">
-                <h2>Weekly Featured Food</h2>
+                <h2>Nổi bật trong tuần</h2>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="food-item">
-                    <h2>Breakfast</h2>
-                    <img src="~/Content/img/breakfast_item.jpg" alt="">
-                    <div class="price">$4.50</div>
-                    <div class="text-content">
-                        <h4>Kale Chips Art Party</h4>
-                        <p>Dreamcatcher squid ennui cliche chicharros nes echo  small batch jean shorts hexagon street art knausgaard wolf...</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="food-item">
-                    <h2>Lunch</h2>
-                    <img src="~/Content/img/lunch_item.jpg" alt="">
-                    <div class="price">$7.50</div>
-                    <div class="text-content">
-                        <h4>Taiyaki Gastro Tousled</h4>
-                        <p>Dreamcatcher squid ennui cliche chicharros nes echo  small batch jean shorts hexagon street art knausgaard wolf...</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="food-item">
-                    <h2>Dinner</h2>
-                    <img src="~/Content/img/dinner_item.jpg" alt="">
-                    <div class="price">$12.50</div>
-                    <div class="text-content">
-                        <h4>Batch Squid Jean Shorts</h4>
-                        <p>Dreamcatcher squid ennui cliche chicharros nes echo  small batch jean shorts hexagon street art knausgaard wolf...</p>
-                    </div>
-                </div>
-            </div>
+        <div class="row" id="noibat">
+
+        </div>
+        <div class="row" id="featured-food">
         </div>
     </div>
 </section>
@@ -184,7 +154,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="heading">
-                    <h2>Our blog post</h2>
+                    <h2>Blogs</h2>
                 </div>
             </div>
         </div>
@@ -239,6 +209,42 @@
             event.preventDefault();
             $('#main-nav').toggleClass("open");
         });
+        $("#datban").on('click', function (event) {
+            event.preventDefault();
+            var date = new Date($("#ngaydat").val());
+            var now = new Date();
+            if (date.getFullYear() < now.getFullYear()) {
+                $("#ngaydat").css("border-color", "red");
+                $("#ngaydat").focus();
+            } else {
+                if (date.getMonth() < now.getMonth()) {
+                    $("#ngaydat").css("border-color", "red");
+                    $("#ngaydat").focus();
+                } else {
+                    if (date.getDate() < now.getDate()) {
+                        $("#ngaydat").css("border-color", "red");
+                        $("#ngaydat").focus();
+                    }
+                }
+            }
+            var obj = {};
+            obj.hoten = $("#name").val();
+            obj.sdt = $("#phone").val();
+            obj.ngaydat = $("#ngaydat").val();
+            obj.giodat = $("#giodat").val();
+            obj.songuoi = $("#songuoi").val();
+            $.ajax({
+                url: "https://localhost:44315/api/datban",
+                method: "post",
+                contentType: "application/json",
+                dataType: "json",
+                data: JSON.stringify(obj)
+            }).done(function (response) {
+                alert("Nhân viên sẽ liên lạc với bạn trong ít phút, trân trọng!")
+            }).fail(function (response) {
+
+            })
+        })
     });
     // scroll function
     function scrollToID(id, speed) {
@@ -263,16 +269,17 @@
             contentType: "application/json",
         }).done(function (response) {
             $.each(response, function (index, item) {
+                var date = new Date(item.ngayblog);
                 var row = $(`<div class='col-md-6'>
                 <div class='blog-post'>
-                    <img src='`+ item.anhminhhoa + `' alt=''>
-                    <div class='date'>`+ item.ngayblog + `</div>
+                    <img src='`+ item.anhminhhoa + `' alt='' height="237" width="270">
+                    <div class='date'>`+ ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + date.getFullYear() + `</div>
                     <div class='right-content'>
                         <h4>`+ item.tenblog + `</h4>
-                        <span>`+ item.nguoidung + `</span>
-                        <p>`+ item.noidung + `</p>
+                        <span>`+ item.NGUOIDUNG.username + `/&nbsp;` + item.NGUOIDUNG.quyen + `</span>
+                        <p style="display: -webkit-box; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 4; -webkit-box-orient: vertical">`+ item.noidung + `</p>
                         <div class='text-button'>
-                            <a href='#'>Continue Reading</a>
+                            <a href='#'>Xem Tiếp</a>
                         </div>
                     </div>
                 </div>
@@ -280,7 +287,7 @@
                 $("#rowblog").append(row);
             })
         })
-            $.ajax({
+        $.ajax({
             url: "https://localhost:44315/api/loaimonan",
             method: "get",
             contentType: "application/json",
@@ -289,16 +296,41 @@
                 var row = $(`<div class="col-md-3 col-sm-6 col-xs-12">
                 <div class="service-item">
                     <a href="Home/Menu">
-                        <img src="`+ item.anhminhhoa + `" alt="` + item.tenloaimon +`">
-                        <h4>`+ item.tenloaimon +`</h4>
+                        <img src="`+ item.anhminhhoa + `" alt="` + item.tenloaimon + `">
+                        <h4>`+ item.tenloaimon + `</h4>
                     </a>
                 </div>
             </div>`);
                 $("#rowservice").append(row);
             })
         })
+        $.ajax({
+            url: "https://localhost:44315/api/monan/noibat",
+            method: "get",
+            contentType: "application/json"
+        }).done(function (response) {
+            $.each(response, function (index, item) {
+                var row = $(`<div class="col-md-4">
+                <div class="food-item">
+                    <h2>`+ item.LOAIMONAN.tenloaimon + `</h2>
+                    <img src="`+ item.anhminhhoa + `" alt="" width="300" height="174.188">
+                    <div class="price">$`+ item.dongia + `</div>
+                    <div class="text-content">
+                        <h4>`+ item.tenmonan + `</h4>
+                        <p style="display: -webkit-box; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 3; -webkit-box-orient: vertical">`+ item.mota + `</p>
+                    </div>
+                </div>
+            </div>`);
+                $("#featured-food").append(row);
+            })
+        }).fail(function (response) {
+
+        })
     }
-        setInputFilter(document.getElementById("phone"), function (value) {
+    setInputFilter(document.getElementById("phone"), function (value) {
+        return /^-?\d*[.]?\d*$/.test(value);
+    });
+    setInputFilter(document.getElementById("songuoi"), function (value) {
         return /^-?\d*[.]?\d*$/.test(value);
     });
 

@@ -17,6 +17,9 @@ namespace LTTH_NhaHang.Models
 
         public int loaibanID { get; set; }
 
+        [StringLength(50)]
+        public string tenloaiban { get; set; }
+
         public int? succhua { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

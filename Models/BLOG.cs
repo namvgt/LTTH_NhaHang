@@ -19,7 +19,6 @@ namespace LTTH_NhaHang.Models
         [Column(TypeName = "date")]
         public DateTime? ngayblog { get; set; }
 
-        [Column(TypeName = "text")]
         public string noidung { get; set; }
 
         [StringLength(50)]

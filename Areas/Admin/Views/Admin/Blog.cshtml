@@ -39,7 +39,7 @@
             </div>
             <form>
                 <div class="dialog-body">
-                    <input type="hidden" id="monanID" />
+                    <input type="hidden" id="maBlog" />
                     <div class="">
                         <label class="dialog-label">Tên blog</label>
                         <input type="text" id="txtTenblog" />
@@ -135,6 +135,7 @@
                     dataType: "json"
                 }).done(function (response) {
                     $("#dialog").modal("hide");
+                    loadData();
                 }).fail(function (response) {
 
                 })
@@ -185,7 +186,7 @@
                     <tbody id="rowblog">`;
             $.each(response, function (index, item) {
                 var row = `<tr>
-                            <th><img src="`+ item.anhminhhoa.trim() + `" alt=""></th>
+                            <th><div style="padding-top: calc(50% - 118px)"><img src="`+ item.anhminhhoa.trim() + `" alt="" height="236" width="300"></div></th>
                             <th>`+ item.tenblog + `</th>
                             <th>`+ item.noidung + `</th>
                             <th>`+ item.NGUOIDUNG.quyen + `</th>

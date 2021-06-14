@@ -148,9 +148,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BanController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\DatbanController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\LoaiMonAnController.cs" />
     <Compile Include="Controllers\MonAnController.cs" />
     <Compile Include="Controllers\NguoiDungController.cs" />
@@ -159,12 +161,9 @@
     </Compile>
     <Compile Include="Models\BAN.cs" />
     <Compile Include="Models\BLOG.cs" />
-    <Compile Include="Models\CTDATMON.cs" />
-    <Compile Include="Models\CTHOADON.cs" />
     <Compile Include="Models\DATBAN.cs" />
-    <Compile Include="Models\DATMON.cs" />
     <Compile Include="Models\DAUBEP.cs" />
-    <Compile Include="Models\HOADON.cs" />
+    <Compile Include="Models\DDATBAN.cs" />
     <Compile Include="Models\KHACHHANG.cs" />
     <Compile Include="Models\LOAIBAN.cs" />
     <Compile Include="Models\LOAIMONAN.cs" />
@@ -1932,7 +1931,6 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <Content Include="Areas\Admin\scss\navs\_global.scss" />
     <Content Include="Areas\Admin\scss\navs\_sidebar.scss" />
     <Content Include="Areas\Admin\scss\navs\_topbar.scss" />
@@ -2111,6 +2109,8 @@
     <Content Include="Areas\Admin\Views\Admin\Nguoidung.cshtml" />
     <Content Include="Content\css\avatar.less" />
     <Content Include="Areas\Admin\Views\Admin\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Datban.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Ban.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\inputFilter.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

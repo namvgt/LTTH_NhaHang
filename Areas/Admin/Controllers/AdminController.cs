@@ -8,15 +8,12 @@ using System.Web.Security;
 
 namespace LTTH_NhaHang.Areas.Admin.Controllers
 {
+    [RoutePrefix("Admin")]
     [Authorize]
     public class AdminController : Controller
     {
         Model1 db = new Model1();
         // GET: Admin/Admin
-        public ActionResult Index()
-        {
-            return View();
-        }
         public ActionResult Blog()
         {
             return View();
@@ -34,6 +31,14 @@ namespace LTTH_NhaHang.Areas.Admin.Controllers
         {
             return View();
         }
+        public ActionResult Datban()
+        {
+            return View();
+        }
+        public ActionResult Ban()
+        {
+            return View();
+        }
         [AllowAnonymous]
         public ActionResult Login()
         {
@@ -43,9 +48,9 @@ namespace LTTH_NhaHang.Areas.Admin.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            Session.Remove("Nguoidung");
+            Session.Remove("NguoiDung");
             return View("Login");
-        }        
+        }
         [AllowAnonymous]
         [HttpPost]
         public ActionResult Login(string username, string pwd)
@@ -59,8 +64,15 @@ namespace LTTH_NhaHang.Areas.Admin.Controllers
             {
                 if (pwd == user.password.Trim())
                 {
-                    Session["Nguoidung"] = user;
-                    FormsAuthentication.SetAuthCookie(username, false);
+                    FormsAuthentication.SetAuthCookie(username, true);
+                    Session["NguoiDung"] = user;
+                    //var authTicket = new FormsAuthenticationTicket(1, username, DateTime.Now, DateTime.Now.AddMinutes(20), false, "");
+
+                    //string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+
+                    //var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                    //System.Web.HttpContext.Current.Response.Cookies.Add(authCookie);
+                    //var name = HttpContext.User.Identity.Name;
                     return View("Monan");
                 }
                 else

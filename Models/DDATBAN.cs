@@ -6,23 +6,23 @@ namespace LTTH_NhaHang.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("CTHOADON")]
-    public partial class CTHOADON
+    [Table("DDATBAN")]
+    public partial class DDATBAN
     {
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int hoadonID { get; set; }
+        public int datbanID { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int monanID { get; set; }
+        public int banID { get; set; }
 
-        public int? soluong { get; set; }
+        public bool? trangthai { get; set; }
 
-        public virtual HOADON HOADON { get; set; }
+        public virtual BAN BAN { get; set; }
 
-        public virtual MONAN MONAN { get; set; }
+        public virtual DATBAN DATBAN { get; set; }
     }
 }

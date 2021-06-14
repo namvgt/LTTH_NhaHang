@@ -13,11 +13,9 @@ namespace LTTH_NhaHang.Models
         public KHACHHANG()
         {
             DATBANs = new HashSet<DATBAN>();
-            DATMONs = new HashSet<DATMON>();
-            HOADONs = new HashSet<HOADON>();
         }
 
-        public string khachhangID { get; set; }
+        public int khachhangID { get; set; }
 
         [StringLength(50)]
         public string hoten { get; set; }
@@ -33,11 +31,5 @@ namespace LTTH_NhaHang.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DATBAN> DATBANs { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DATMON> DATMONs { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HOADON> HOADONs { get; set; }
     }
 }

@@ -28,6 +28,13 @@ namespace LTTH_NhaHang.Controllers
             return db.MONANs.Find(id);
         }
 
+        [HttpGet]
+        [Route("NoiBat")]
+        public IEnumerable<MONAN> NoiBat()
+        {
+            var list = db.MONANs.Where(x => x.trangthai == true).ToList();
+            return list;
+        }
         // POST: api/MonAn
         [Route]
         [HttpPost]

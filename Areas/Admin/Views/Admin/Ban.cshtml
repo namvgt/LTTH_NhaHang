@@ -1,0 +1,277 @@
+﻿
+@{
+    ViewBag.Title = "Ban";
+}
+@*<link href="~/Areas/Admin/css/button.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/css/dialog.css" rel="stylesheet" />
+    <script src="~/Scripts/inputFilter.js"></script>*@
+<link href="~/Content/css/avatar.less" rel="stylesheet/less" />
+<script src="//cdn.jsdelivr.net/npm/less@3.13"></script>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Danh sách bàn</h1>
+    <div class="col-5 item">
+        <input type="date" id="ngaydat" />
+        @*<i style="padding-bottom: 20px" class="fas fa-calendar-alt">&ensp;&ensp;&ensp;</i>*@
+    </div>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <button class="btn btn-primary btn-icon-split" id="btndadat">
+                <span class="text">Đã đặt</span>
+            </button>
+            <button class="btn btn-primary btn-icon-split" id="btntrong">
+                <span class="text">Còn trống</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <div id="data-table">
+            </div>
+        </div>
+    </div>
+
+</div>
+@*<div class="modal fade" id="dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thông tin người dùng</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form>
+                    <div class="dialog-body">
+                        <input type="hidden" id="nguoidungID" />
+                        <div class="avatar-upload">
+                            <div class="avatar-edit">
+                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                <label for="imageUpload"><i class="fas fa-pencil-alt" style="padding:2px"></i></label>
+                            </div>
+                            <div class="avatar-preview">
+                                <div id="imagePreview" style="background-image: url(/Content/img/avartarDefault.jpg)"></div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <p>Họ và tên(*)</p>
+                            <input type="text" id="txtHoten" required />
+                        </div>
+                        <div class="item" id="loginInfo">
+                            <p>Đăng nhập(*)</p>
+                            <input type="text" id="txtUsername" placeholder="Tên đăng nhập" required />
+                            <div class="name-item">
+                                <input type="password" placeholder="Mật khẩu" id="pwd" required />
+                                <input type="password" placeholder="Xác nhận" id="repwd" style="margin-right: 10px" required />
+                            </div>
+                            <p style="color: #ff0000; display: none" id="pwderror">Mật khẩu không trùng khớp</p>
+                        </div>
+                        <div class="item">
+                            <p>Quyền(*)</p>
+                            <select id="quyen" style="width: 446px" required>
+                                <option value=""></option>
+                                <option value="administrator">Administrator</option>
+                                <option value="employee">Employee</option>
+                            </select>
+                        </div>
+                        <div class="item">
+                            <p>Số điện thoại</p>
+                            <input type="text" id="txtSdt" />
+                        </div>
+                        <div class="item">
+                            <p>Ngày sinh</p>
+                            <input type="date" id="ngaysinh" />
+                            <i class="fas fa-calendar-alt">&ensp;</i>
+                        </div>
+                        <div class="item">
+                            <p>Email</p>
+                            <input type="email" id="txtEmail" />
+                        </div>
+                        <div class="item">
+                            <p>Địa chỉ</p>
+                            <input type="text" id="txtDiachi" />
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                    <button class="btn btn-primary" id="btn-save">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<!-- /.container-fluid -->
+<!-- Page level custom scripts -->
+<script>
+    var date = new Date();
+    var today = date.getFullYear() + '-' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '-' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate()));
+    $(document).ready(function () {
+        debugger
+
+        $("#ngaydat").val(today);
+        loadDataDadat();
+        $("#btndadat").on('click', function (event) {
+            event.preventDefault();
+            loadDataDadat();
+        });
+        $("#btntrong").on('click', function (event) {
+            event.preventDefault();
+            loadDataTrong();
+        });
+    });
+    function loadDataDadat() {
+        $("#data-table").empty();
+        var ngaydat = $("#ngaydat").val();
+        $.ajax({
+            url: "https://localhost:44315/api/ban/getdadat?ngaydat=" + ngaydat,
+            method: "GET",
+            data: "",
+            contentType: "application/json",
+            dataType: ""
+        }).done(function (response) {
+            var table = `<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Tên bàn</th>
+                            <th>Loại bàn</th>
+                            <th>Khách hàng</th>
+                            <th>Sdt</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Tên bàn</th>
+                            <th>Loại bàn</th>
+                            <th>Khách hàng</th>
+                            <th>Sdt</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody id="rowblog">`;
+            $.each(response, function (index, item) {
+                var row = `<tr>
+                            <th>`+ item.BAN.tenban + `</th>
+                            <th>`+ item.BAN.LOAIBAN.tenloaiban + `</th>
+                            <th>`+ item.DATBAN.KHACHHANG.hoten + `</th>
+                            <th>`+ item.DATBAN.KHACHHANG.sdt + `</th>
+                            <th style="text-align: center"><a onclick="deleteBlog(`+ item.nguoidungID + `)" href="javascript:void(0)"><i class="fas fa-trash-alt fa-2x" style="color: #ff0000"></i></a></th>
+                            <th style="text-align: center"><a onclick="editBlog(`+ item.nguoidungID + `)" href="javascript:void(0)"><i class="fas fa-edit fa-lg fa-2x"></i></a></th>
+                        </tr>`;
+                table += row;
+            })
+            table += (`</tbody>
+                </table>`);
+            $("#data-table").append($(table));
+            $('#dataTable').DataTable();
+        }).fail(function (respose) {
+
+        })
+    }
+    function loadDataTrong() {
+        $("#data-table").empty();
+        var ngaydat = $("#ngaydat").val();
+        $.ajax({
+            url: "https://localhost:44315/api/ban/gettrong?ngaydat=" + ngaydat,
+            method: "GET",
+            data: "",
+            contentType: "application/json",
+            dataType: ""
+        }).done(function (response) {
+            var table = `<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Tên bàn</th>
+                            <th>Loại bàn</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Tên bàn</th>
+                            <th>Loại bàn</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody id="rowblog">`;
+            $.each(response, function (index, item) {
+                var row = `<tr>
+                            <th>`+ item.tenban + `</th>
+                            <th>`+ item.LOAIBAN.tenloaiban + `</th>
+                            <th style="text-align: center"><a onclick="deleteBlog(`+ item.nguoidungID + `)" href="javascript:void(0)"><i class="fas fa-trash-alt fa-2x" style="color: #ff0000"></i></a></th>
+                            <th style="text-align: center"><a onclick="editBlog(`+ item.nguoidungID + `)" href="javascript:void(0)"><i class="fas fa-edit fa-lg fa-2x"></i></a></th>
+                        </tr>`;
+                table += row;
+            })
+            table += (`</tbody>
+                </table>`);
+            $("#data-table").append($(table));
+            $('#dataTable').DataTable();
+        }).fail(function (respose) {
+
+        })
+    }
+
+    function editBlog(nguoidungID) {
+        var url = "https://localhost:44315/api/nguoidung/" + nguoidungID;
+        $.ajax({
+            url: url,
+            method: "GET",
+            dataType: "",
+            data: "",
+            contentType: "application/json"
+        }).done(function (response) {
+            var date = new Date(response.ngaysinh);
+            $("#dialog").modal();
+            $("#loginInfo").hide();
+            $("#nguoidungID").val(response.nguoidungID);
+            $("#txtHoten").val(response.hoten);
+            $("#txtUsername").val(response.username);
+            $("#pwd").val(response.password);
+            $("#quyen").val(response.quyen.trim());
+            $("#txtEmail").val(response.email);
+            $("#ngaysinh").val(((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + date.getFullYear());
+            $("#txtSdt").val(response.sdt);
+            $("#txtDiachi").val(response.diachi);
+            $("#imagePreview").css({ "background-image": "url(" + response.anhminhhoa + ")" });
+        }).fail(function (response) {
+
+        })
+    }
+    function deleteBlog(nguoidungID) {
+        if (confirm("Bạn có chắc muốn xóa người dùng này?")) {
+            debugger
+            $.ajax({
+                url: "https://localhost:44315/api/nguoidung/" + nguoidungID,
+                method: "delete",
+                data: "",
+                dataType: "",
+                contentType: "application/json",
+            }).done(function (response) {
+                loadData();
+            }).fail(function (response) {
+                console.log(response);
+            })
+        }
+    }
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview').hide();
+                $('#imagePreview').fadeIn(650);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+
+

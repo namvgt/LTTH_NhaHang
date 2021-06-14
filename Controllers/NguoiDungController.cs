@@ -33,7 +33,10 @@ namespace LTTH_NhaHang.Controllers
         [HttpPost]
         public void Post([FromBody]NGUOIDUNG value)
         {
-            value.anhminhhoa = "/Content/img/" + value.anhminhhoa;
+            if (value.anhminhhoa != "")
+                value.anhminhhoa = "/Content/img/" + value.anhminhhoa;
+            else
+                value.anhminhhoa = "/Content/img/avartarDefault.jpg";
             db.NGUOIDUNGs.Add(value);
             db.SaveChanges();
         }
@@ -41,7 +44,7 @@ namespace LTTH_NhaHang.Controllers
         // PUT api/<controller>/5
         [Route("{id:int}")]
         [HttpPut]
-        public void Put(int id, [FromBody ]NGUOIDUNG value)
+        public void Put(int id, [FromBody]NGUOIDUNG value)
         {
             var user = db.NGUOIDUNGs.Find(id);
             user.hoten = value.hoten;

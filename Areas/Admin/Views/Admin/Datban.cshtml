@@ -1,0 +1,252 @@
+﻿
+@{
+    ViewBag.Title = "Datban";
+}
+<link href="~/Areas/Admin/css/button.css" rel="stylesheet" />
+<link href="~/Areas/Admin/css/dialog.css" rel="stylesheet" />
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Danh sách đặt bàn</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <button class="btn btn-primary btn-icon-split" id="btnAdd">
+                <span class="icon text-white-50">
+                    <i class="fas fa-plus-circle"></i>
+                </span>
+                <span class="text">Thêm mới</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <div id="data-table">
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal fade" id="dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thông tin đăt bàn</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form>
+                <div class="dialog-body">
+                    <input type="hidden" id="datbanID" />
+                    <div class="item">
+                        <p>Họ tên khách hàng</p>
+                        <input type="text" id="hoten" />
+                    </div>
+                    <div class="item">
+                        <p>Số điện thoại</p>
+                        <input type="text" id="sdt" />
+                    </div>
+                    <div class="item">
+                        <p>Số người</p>
+                        <input type="text" id="songuoi" />
+                    </div>
+                    <div class="item">
+                        <p>Ngày đặt</p>
+                        <input type="date" id="ngaydat" />
+                        <i class="fas fa-calendar-alt">&ensp;</i>
+                    </div>
+                    <div class="item">
+                        <p>Giờ đặt</p>
+                        <input type="time" id="giodat" />
+                    </div>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-primary" id="btn-save">Lưu</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page level custom scripts -->
+<script src="~/Areas/Admin/js/demo/datatables-demo.js"></script>
+<script>
+    var formmode = null;
+    loadData()
+    $(document).ready(function () {
+        $("#btnAdd").on('click', function (event) {
+            event.preventDefault();
+            $("#dialog").modal();
+            $("#hoten").val("");
+            $("#sdt").val("");
+            $("#songuoi").val("");
+            formmode = "add"
+        });
+        $("#btn-save").on('click', function (event) {
+            event.preventDefault();
+            var obj = {};
+            obj.hoten = $("#hoten").val();
+            obj.sdt = $("#sdt").val();
+            obj.ngaydat = $("#ngaydat").val();
+            obj.songuoi = $("#songuoi").val();
+            obj.giodat = $("#giodat").val();
+            debugger
+            if (formmode == "add") {
+                $.ajax({
+                    url: "https://localhost:44315/api/datban",
+                    method: "POST",
+                    data: JSON.stringify(obj),
+                    contentType: "application/json",
+                    dataType: "json"
+                }).done(function (response) {
+                    loadData();
+                    $("#dialog").modal("hide");
+                }).fail(function (response) {
+
+                })
+            }
+            else {
+                $.ajax({
+                    url: "https://localhost:44315/api/datban/" + $("#datbanID").val(),
+                    method: "PUT",
+                    data: JSON.stringify(obj),
+                    contentType: "application/json",
+                    dataType: "json"
+                }).done(function (response) {
+                    loadData();
+                    $("#dialog").modal("hide");
+                }).fail(function (response) {
+
+                })
+            }
+        });
+    });
+    function loadData() {
+        $("#data-table").empty();
+        $.ajax({
+            url: "https://localhost:44315/api/datban",
+            method: "GET",
+            data: "",
+            contentType: "application/json",
+            dataType: ""
+        }).done(function (response) {
+            var table = `<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Họ tên khách hàng</th>
+                            <th>Số điện thoại</th>
+                            <th>Số người</th>
+                            <th>Ngày đặt</th>
+                            <th>Giờ đặt</th>
+                            <th>Xác nhận</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Họ tên khách hàng</th>
+                            <th>Số điện thoại</th>
+                            <th>Số người</th>
+                            <th>Ngày đặt</th>
+                            <th>Giờ đặt</th>
+                            <th>Xác nhận</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    <tbody id="rowdatban">`;
+            $.each(response, function (index, item) {
+                var date = new Date(item.ngaydat);
+                if (item.trangthai == true) {
+                    var row = `<tr>
+                            <th>`+ item.KHACHHANG.hoten + `</th>
+                            <th>`+ item.KHACHHANG.sdt + `</th>
+                            <th>`+ item.songuoi + `</th>
+                            <th>`+ ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + date.getFullYear() + `</th>
+                            <th>`+ item.giodat + `</th>
+                            <th>Đã xác nhận</th>
+                            <th style="text-align: center"><a onclick="deletedatban(`+ item.datbanID + `)" href="javascript:void(0)"><i class="fas fa-trash-alt fa-2x" style="color: #ff0000"></i></a></th>
+                            <th style="text-align: center"><a onclick="editdatban(`+ item.datbanID + `)" href="javascript:void(0)"><i class="fas fa-edit fa-lg fa-2x"></i></a></th>
+                        </tr>`;
+                }
+                else {
+                    var row = `<tr>
+                            <th>`+ item.KHACHHANG.hoten + `</th>
+                            <th>`+ item.KHACHHANG.sdt + `</th>
+                            <th>`+ item.songuoi + `</th>
+                            <th>`+ ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + date.getFullYear() + `</th>
+                            <th>`+ item.giodat + `</th>
+                            <th><a id="confirm" href="javascript:void(0)" onclick="confirmDatban(`+ item.datbanID +`)">Xác nhận</a></th>
+                            <th style="text-align: center"><a onclick="deletedatban(`+ item.datbanID + `)" href="javascript:void(0)"><i class="fas fa-trash-alt fa-2x" style="color: #ff0000"></i></a></th>
+                            <th style="text-align: center"><a onclick="editdatban(`+ item.datbanID + `)" href="javascript:void(0)"><i class="fas fa-edit fa-lg fa-2x"></i></a></th>
+                        </tr>`;
+                }
+                table += row;
+            })
+            table += (`</tbody>
+                </table>`);
+            $("#data-table").append($(table));
+            $('#dataTable').DataTable();
+        }).fail(function (respose) {
+
+        })
+    }
+    function editdatban(datbanID) {
+        var url = "https://localhost:44315/api/datban/" + datbanID;
+        $.ajax({
+            url: url,
+            method: "GET",
+            dataType: "",
+            data: "",
+            contentType: "application/json"
+        }).done(function (response) {
+            $("#dialog").modal();
+            debugger
+            $("#datbanID").val(response.datbanID);
+            $("#hoten").val(response.KHACHHANG.hoten);
+            $("#songuoi").val(response.songuoi);
+            $("#sdt").val(response.KHACHHANG.sdt);
+            var date = new Date(response.ngaydat);
+            var today = date.getFullYear() + '-' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '-' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate()));
+            $("#ngaydat").val(today);
+            $("#giodat").val(response.giodat.trim());
+        }).fail(function (response) {
+
+        })
+    }
+    function deletedatban(datbanID) {
+        if (confirm("Bạn có chắc muốn xóa ?")) {
+            debugger
+            $.ajax({
+                url: "https://localhost:44315/api/datban/" + datbanID,
+                method: "delete",
+                data: "",
+                dataType: "",
+                contentType: "application/json",
+            }).done(function (response) {
+                loadData();
+            }).fail(function (response) {
+                console.log(response);
+            })
+        }
+    }
+    function confirmDatban(datbanID) {
+        if (confirm("Bạn có chắc đã xác nhận với khách hàng?")) {
+            $.ajax({
+                url: "https://localhost:44315/api/datban/PutConfirm/" + datbanID,
+                method: "PUT",
+                data: "",
+                dataType: "",
+                contentType: "application/json"
+            }).done(function (response) {
+                loadData();
+            }).fail(function (response) {
+
+            })
+        }
+    }
+</script>

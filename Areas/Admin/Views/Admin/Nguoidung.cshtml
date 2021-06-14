@@ -159,10 +159,7 @@
             obj.sdt = $("#txtSdt").val();
             obj.diachi = $("#txtDiachi").val();
             obj.quyen = $("#quyen").val();
-            if ($("#imageUpload").val() == "") {
-                obj.anhminhhoa = "avartarDefault.jpg";
-            }
-            else {
+            if ($("#imageUpload").val() != "") {
                 obj.anhminhhoa = $("#imageUpload").val().replace(" C:\\fakepath\\", "");
             }
             debugger
@@ -271,7 +268,7 @@
             $("#pwd").val(response.password);
             $("#quyen").val(response.quyen.trim());
             $("#txtEmail").val(response.email);
-            $("#ngaysinh").val(((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + date.getFullYear());
+            $("#ngaysinh").val(date.getFullYear() + '-' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '-' + ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())));
             $("#txtSdt").val(response.sdt);
             $("#txtDiachi").val(response.diachi);
             $("#imagePreview").css({ "background-image": "url(" + response.anhminhhoa + ")" });

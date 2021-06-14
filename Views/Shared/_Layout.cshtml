@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="~/Content/css/hero-slider.css">
     <link rel="stylesheet" href="~/Content/css/owl-carousel.css">
     <link rel="stylesheet" href="~/Content/css/templatemo-style.css">
-   @* <link href="~/Areas/Admin/css/dialog.css" rel="stylesheet" />*@
+    @* <link href="~/Areas/Admin/css/dialog.css" rel="stylesheet" />*@
     <link href="https://fonts.googleapis.com/css?family=Spectral:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 
@@ -55,19 +55,16 @@
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     </ul>
                 </div>
-                <!--/.navbar-collapse-->
             </nav>
-            <!--/.navbar-->
         </div>
-        <!--/.container-->
     </div>
     <!--/.header-->
     <div class="primary-button" style="position: fixed; top: calc(50% - 25px); right: 0; z-index: 1000;">
         <a href="javascript:void(0)" style="width: 162px; text-align:center;" data-id="book-table" id="book">Đặt bàn </a>
     </div>
-    <div class="primary-button" style="position: fixed; top: calc(50% + 25px); right: 0; z-index: 1000;">
+    @*<div class="primary-button" style="position: fixed; top: calc(50% + 25px); right: 0; z-index: 1000;">
         <a href="javascript:void(0)" style="width: 162px; text-align: center" data-id="book-table" id="order">Gọi món ngay</a>
-    </div>
+    </div>*@
     @RenderBody()
     <footer>
         <div class="container">
@@ -113,58 +110,52 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="right-info">
-                                    <h4>Reservation</h4>
-                                    <form id="form-submit" method="post" action="/api/datban/Post">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <fieldset>
-                                                    <input style="margin-top:15px; margin-bottom:15px;" name="ngaydat" type="date" class="form-control" id="name" placeholder="Ngày ăn" required="">
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <fieldset>
-                                                    <input style="margin-top:15px; margin-bottom:15px;" name="sogio" type="text" class="form-control" id="name" placeholder="Giờ ăn" required="">
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <fieldset>
-                                                    <input style="margin-top:15px; margin-bottom:15px;" name="hoten" type="text" class="form-control" id="name" placeholder="Họ tên khách hàng" required="">
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <fieldset>
-                                                    <input style="margin-top:15px; margin-bottom:15px;" name="sdt" type="text" class="form-control" id="phone" placeholder="SĐT" required="">
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <fieldset>
-                                                    <select required class="person" name='songuoi'>
-                                                        <option value="">Số người ?</option>
-                                                        <option value="1-Person">1</option>
-                                                        <option value="2-Persons">2</option>
-                                                        <option value="3-Persons">3</option>
-                                                        <option value="4-Persons">4</option>
-                                                        <option value="5-Persons">5</option>
-                                                        <option value="6-Persons">6</option>
-                                                    </select>
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <fieldset>
-                                                    <button type="submit" id="form-submit" class="btn">Book Table</button>
-                                                </fieldset>
-                                            </div>
+                                    <h4>Thông tin đặt bàn</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <input style="margin-top:15px; margin-bottom:15px;" name="ngaydat" type="date" class="form-control" id="name" placeholder="Ngày ăn" required="">
+                                            </fieldset>
                                         </div>
-                                    </form>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <input style="margin-top:15px; margin-bottom:15px;" name="sogio" type="text" class="form-control" id="name" placeholder="Thời gian" required="">
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <input style="margin-top:15px; margin-bottom:15px;" name="hoten" type="text" class="form-control" id="name" placeholder="Họ tên" required="">
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <input style="margin-top:15px; margin-bottom:15px;" name="sdt" type="text" class="form-control" id="phone" placeholder="SĐT" required="">
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <select required class="person" name='songuoi'>
+                                                    <option value="">Số người</option>
+                                                    <option value="1-Person">1</option>
+                                                    <option value="2-Persons">2</option>
+                                                    <option value="3-Persons">3</option>
+                                                    <option value="4-Persons">4</option>
+                                                    <option value="5-Persons">5</option>
+                                                    <option value="6-Persons">6</option>
+                                                </select>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <button type="submit" id="form-submit" class="btn">Book Table</button>
+                                            </fieldset>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </form>
-                @*<div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
-                        <button class="btn btn-primary" id="btn-save">Lưu</button>
-                    </div>*@
             </div>
         </div>
     </div>
@@ -181,7 +172,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div>
-                                    <img src="~/Content/img/datmon.jpg" style="border-bottom-left-radius: 7px; border-top-left-radius: 7px"/>
+                                    <img src="~/Content/img/datmon.jpg" style="border-bottom-left-radius: 7px; border-top-left-radius: 7px" />
                                 </div>
                             </div>
                             <div class="col-md-6" style="padding-right: 30px; padding-top: 10px">
@@ -206,18 +197,18 @@
                                     </fieldset>
                                 </div>
                                 @*<div style="padding-bottom: 20px">
-                                    <fieldset>
-                                        <select required class="person" name='persons'>
-                                            <option value="">Chọn món...</option>
-                                            <option value="1-Person">abc</option>
-                                            <option value="2-Persons">abc</option>
-                                            <option value="3-Persons">abc</option>
-                                            <option value="4-Persons">abc</option>
-                                            <option value="5-Persons">abc</option>
-                                            <option value="6-Persons">abc</option>
-                                        </select>
-                                    </fieldset>
-                                </div>*@
+                                        <fieldset>
+                                            <select required class="person" name='persons'>
+                                                <option value="">Chọn món...</option>
+                                                <option value="1-Person">abc</option>
+                                                <option value="2-Persons">abc</option>
+                                                <option value="3-Persons">abc</option>
+                                                <option value="4-Persons">abc</option>
+                                                <option value="5-Persons">abc</option>
+                                                <option value="6-Persons">abc</option>
+                                            </select>
+                                        </fieldset>
+                                    </div>*@
                                 <button class="btn btn-primary" type="submit">Đặt món</button>
 
                             </div>
@@ -225,9 +216,9 @@
                     </div>
                 </form>
                 @*<div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
-            <button class="btn btn-primary" id="btn-save">Lưu</button>
-        </div>*@
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                        <button class="btn btn-primary" id="btn-save">Lưu</button>
+                    </div>*@
             </div>
         </div>
     </div>
